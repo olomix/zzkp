@@ -1,0 +1,19 @@
+[package]
+name = "provelib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+methods = { path = "../methods" }
+# risc0-zkvm = { version = "1.1.2", features = ["prove"] }
+# risc0-zkvm = { path = "../../risc0/risc0/zkvm", features = ["prove"] }
+risc0-zkvm = { git = "https://github.com/risc0/risc0.git", branch = "main", features = ["prove"] }
+#type_analysis = { path = "../circom/type_analysis" }
+
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+serde = "1.0"
+serde_json = "1.0.132"
+libc = "0.2.161"
+
+[lib]
+crate-type = ["staticlib"]

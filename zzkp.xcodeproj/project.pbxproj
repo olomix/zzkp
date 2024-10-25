@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7460B8B32CCA4E3F00A9464B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7460B8B22CCA4E3F00A9464B /* libc++.tbd */; };
+		7460B8B62CCB9B3400A9464B /* libprovelib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7460B8B52CCB9B3400A9464B /* libprovelib.a */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		74AD01EF2CC971AE0071DBA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,9 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7460B8B02CCA3BBC00A9464B /* libbb3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbb3.a; path = adderlib/libbb3.a; sourceTree = "<group>"; };
+		7460B8B22CCA4E3F00A9464B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7460B8B52CCB9B3400A9464B /* libprovelib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprovelib.a; path = "provelib/target/aarch64-apple-ios/release/libprovelib.a"; sourceTree = "<group>"; };
 		74AD01DE2CC971AD0071DBA2 /* zzkp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zzkp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AD01EE2CC971AE0071DBA2 /* zzkpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zzkpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AD01F82CC971AE0071DBA2 /* zzkpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zzkpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74AD020F2CC978420071DBA2 /* libadder.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libadder.a; path = adderlib/libadder.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7460B8B62CCB9B3400A9464B /* libprovelib.a in Frameworks */,
+				7460B8B32CCA4E3F00A9464B /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +89,7 @@
 				74AD01E02CC971AD0071DBA2 /* zzkp */,
 				74AD01F12CC971AE0071DBA2 /* zzkpTests */,
 				74AD01FB2CC971AE0071DBA2 /* zzkpUITests */,
+				74AD020E2CC978420071DBA2 /* Frameworks */,
 				74AD01DF2CC971AD0071DBA2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +104,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		74AD020E2CC978420071DBA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7460B8B52CCB9B3400A9464B /* libprovelib.a */,
+				7460B8B22CCA4E3F00A9464B /* libc++.tbd */,
+				7460B8B02CCA3BBC00A9464B /* libbb3.a */,
+				74AD020F2CC978420071DBA2 /* libadder.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,6 +122,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74AD02022CC971AE0071DBA2 /* Build configuration list for PBXNativeTarget "zzkp" */;
 			buildPhases = (
+				7460B8B42CCB9A6B00A9464B /* ShellScript */,
 				74AD01DA2CC971AD0071DBA2 /* Sources */,
 				74AD01DB2CC971AD0071DBA2 /* Frameworks */,
 				74AD01DC2CC971AD0071DBA2 /* Resources */,
@@ -230,6 +254,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7460B8B42CCB9A6B00A9464B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set\n\necho \"SRCROOT=${SRCROOT}\"\n\n# Type a script or drag a script file from your workspace to insert its path.\ncd \"${SRCROOT}/provelib\"\n\npwd\n\nexport PATH=\"$HOME/.cargo/bin:$PATH\"\n\n# cargo build --target aarch64-apple-ios --release -p provelib\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		74AD01DA2CC971AD0071DBA2 /* Sources */ = {
@@ -399,6 +443,7 @@
 				DEVELOPMENT_TEAM = 82V2QZJ7R6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -408,10 +453,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/provelib/target/aarch64-apple-ios/release",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.my.zzkp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "zzkp/zzkp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -436,6 +486,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/provelib/target/aarch64-apple-ios/release",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.my.zzkp;
